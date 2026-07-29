@@ -1,31 +1,44 @@
+/* Container Centering & Layout */
 .ticket-list-container {
   width: 100%;
+  max-width: 1100px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+  box-sizing: border-box;
 }
 
-/* Page Header Spacing */
+/* Page Header Spacing & Alignment */
 .ticket-list-container .page-header {
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
+  text-align: center;
 }
 
 .ticket-list-container .page-header h1 {
   margin: 0 0 0.5rem 0;
   color: #0f172a;
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 2.25rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
 }
 
 .ticket-list-container .page-header p {
   margin: 0;
   color: #64748b;
-  font-size: 1rem;
+  font-size: 1.05rem;
+  font-weight: 400;
 }
 
-/* Controls Bar (Search + Dropdown) Spacing */
+/* Controls Bar (Search + Filter Dropdown) */
 .ticket-list-container .controls-bar {
   display: flex;
   gap: 1.25rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
   align-items: center;
+  background: #ffffff;
+  padding: 1rem 1.25rem;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 16px -2px rgba(0, 0, 0, 0.03);
 }
 
 .ticket-list-container .controls-bar .search-box {
@@ -36,99 +49,113 @@
   width: 100%;
   padding: 0.85rem 1.25rem;
   border: 1px solid #cbd5e1;
-  border-radius: 8px;
+  border-radius: 10px;
   font-size: 0.95rem;
   outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  background-color: #f8fafc;
+  transition: all 0.25s ease;
   box-sizing: border-box;
 }
 
 .ticket-list-container .controls-bar .search-box input:focus {
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+  background-color: #ffffff;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
 }
 
 .ticket-list-container .controls-bar .filter-box select {
   padding: 0.85rem 1.25rem;
   border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  background-color: #ffffff;
+  border-radius: 10px;
+  background-color: #f8fafc;
   font-size: 0.95rem;
+  font-weight: 500;
+  color: #334155;
   cursor: pointer;
   outline: none;
-  min-width: 160px;
+  min-width: 170px;
+  transition: all 0.25s ease;
 }
 
 .ticket-list-container .controls-bar .filter-box select:focus {
-  border-color: #2563eb;
+  background-color: #ffffff;
+  border-color: #4f46e5;
 }
 
-/* Grid Layout Spacing (Max 3 items per row on wider screens) */
+/* Grid Layout Spacing */
 .ticket-list-container .tickets-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 1.75rem;
+  gap: 2rem;
 }
 
-/* Card Styling & Internal Padding */
+/* Ticket Card Styling & Hover Effects */
 .ticket-list-container .ticket-card {
   background: #ffffff;
   border: 1px solid #e2e8f0;
-  border-radius: 12px;
-  padding: 1.5rem;
+  border-radius: 16px;
+  padding: 1.75rem;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
 .ticket-list-container .ticket-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transform: translateY(-5px);
+  border-color: #cbd5e1;
+  box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.08);
 }
 
+/* Card Header & Badges */
 .ticket-list-container .ticket-card .card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 }
 
 .ticket-list-container .ticket-card .ticket-id {
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   color: #64748b;
-  font-weight: 600;
+  font-weight: 700;
+  background: #f1f5f9;
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  letter-spacing: 0.03em;
 }
 
 .ticket-list-container .ticket-card .status-badge {
-  padding: 0.3rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  font-weight: 700;
+  padding: 0.35rem 0.85rem;
+  border-radius: 30px;
+  font-size: 0.725rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
 }
 
 .ticket-list-container .ticket-card .status-badge.open {
-  background-color: #dbeafe;
-  color: #1e40af;
+  background-color: #e0f2fe;
+  color: #0369a1;
 }
 
 .ticket-list-container .ticket-card .status-badge.in-progress {
   background-color: #fef3c7;
-  color: #92400e;
+  color: #b45309;
 }
 
 .ticket-list-container .ticket-card .status-badge.closed {
   background-color: #dcfce7;
-  color: #166534;
+  color: #15803d;
 }
 
+/* Card Typography & Details */
 .ticket-list-container .ticket-card .card-title {
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   margin: 0 0 0.75rem 0;
   color: #0f172a;
-  font-weight: 600;
+  font-weight: 700;
+  line-height: 1.35;
 }
 
 .ticket-list-container .ticket-card .card-customer,
@@ -136,30 +163,55 @@
   font-size: 0.875rem;
   color: #64748b;
   margin: 0 0 0.35rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
 }
 
 .ticket-list-container .ticket-card .card-description {
-  font-size: 0.925rem;
+  font-size: 0.95rem;
   color: #334155;
-  line-height: 1.5;
+  line-height: 1.6;
   flex-grow: 1;
-  margin: 1rem 0 1.5rem 0;
+  margin: 1.25rem 0 1.75rem 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
+/* Card Action Footer */
 .ticket-list-container .ticket-card .card-footer {
   display: flex;
   justify-content: flex-end;
   border-top: 1px solid #f1f5f9;
-  padding-top: 1rem;
+  padding-top: 1.25rem;
 }
 
 .ticket-list-container .ticket-card .card-footer .view-btn {
-  color: #2563eb;
+  color: #4f46e5;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.9rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  transition: all 0.2s ease;
 }
 
 .ticket-list-container .ticket-card .card-footer .view-btn:hover {
-  text-decoration: underline;
+  color: #3730a3;
+  transform: translateX(3px);
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 640px) {
+  .ticket-list-container .controls-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .ticket-list-container .controls-bar .filter-box select {
+    width: 100%;
+  }
 }
