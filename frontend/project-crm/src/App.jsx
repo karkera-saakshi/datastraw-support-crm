@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import TicketList from './pages/TicketList';
 import CreateTicket from './pages/CreateTicket';
-import TicketDetail from './pages/TicketDetail';
+import TicketDetail from './pages/TicketDetails';
 
 function App() {
   return (
