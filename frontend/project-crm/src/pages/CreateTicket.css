@@ -1,0 +1,114 @@
+.create-ticket-container {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
+}
+
+.create-ticket-container .form-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.create-ticket-container .form-card .form-header {
+  margin-bottom: 1.5rem;
+}
+
+.create-ticket-container .form-card .form-header h2 {
+  margin: 0;
+  color: #1e293b;
+  font-size: 1.5rem;
+}
+
+.create-ticket-container .form-card .form-header p {
+  margin-top: 0.25rem;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.create-ticket-container .form-card .error-banner {
+  background-color: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #dc2626;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.create-ticket-container .form-card .form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.25rem;
+}
+
+.create-ticket-container .form-card .form-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 0.5rem;
+}
+
+.create-ticket-container .form-card .form-group input,
+.create-ticket-container .form-card .form-group textarea {
+  padding: 0.75rem 1rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.2s;
+}
+
+.create-ticket-container .form-card .form-group input:focus,
+.create-ticket-container .form-card .form-group textarea:focus {
+  border-color: #2563eb;
+}
+
+.create-ticket-container .form-card .form-group textarea {
+  resize: vertical;
+}
+
+.create-ticket-container .form-card .form-actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.create-ticket-container .form-card .form-actions .btn-cancel {
+  color: #64748b;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+}
+
+.create-ticket-container .form-card .form-actions .btn-cancel:hover {
+  background-color: #f1f5f9;
+}
+
+.create-ticket-container .form-card .form-actions .btn-submit {
+  background-color: #2563eb;
+  color: #ffffff;
+  border: none;
+  padding: 0.65rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.create-ticket-container .form-card .form-actions .btn-submit:hover:not(:disabled) {
+  background-color: #1d4ed8;
+}
+
+.create-ticket-container .form-card .form-actions .btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
