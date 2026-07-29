@@ -12,6 +12,9 @@ let getCollection = () => {
 let createTicket  = (obj, res) =>
 {
     let client = new MongoClient(url);
+    const now = new Date();
+    obj.created_at = now;
+    obj.updated_at = now;
     client.connect();
     let db = client.db("support-CRM");
     let coll = db.collection("tickets");
@@ -70,6 +73,7 @@ let getTicketById = (id, res) =>
 let updateTicket = (id, data, res) =>
 {
     let client = new MongoClient(url);
+    data.updated_at = new Date();
     client.connect();
     let db = client.db("support-CRM");
     let coll = db.collection("tickets");
