@@ -11,10 +11,11 @@ function CreateTicket() {
   const [description, setDescription] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [status, setStatus] = useState('Open');
 
     let handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:9000/api/tickets", { name, email, subject, description })
+    axios.post("http://localhost:9000/api/tickets", { name, email, subject, status, description })
       .then(() => {
         alert("Booking successful!");
         setName("");
@@ -23,7 +24,7 @@ function CreateTicket() {
         setDescription("");
       })
       .catch(() => {
-        alert("Error booking event.");
+        alert("Failed to submit ticket. Please try again.");
       });
     };
 
