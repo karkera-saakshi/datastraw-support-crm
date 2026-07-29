@@ -21,10 +21,39 @@ let createTicket  = (obj, res) =>
     .finally (()=>client.close())
 }
 
-let getAllTickets = () =>
-{
-
-}
+let getAllTickets = (req, res) => {
+    let client = new MongoClient(url);
+    const { search, status } = req.query;
+    let query = {};
+    if (status) {
+        query.status = status; 
+    }
+    if (search) {
+        let searchConditions = [
+            { email: { $regex: search, $options: "i" } },      
+            { description: { $regex: search, $options: "i" } } 
+        ];
+        if (ObjectId.isValid(search)) {
+            searchConditions.push({ _id: new ObjectId(search) });
+        }
+        query.$or = searchConditions;
+    }
+    client.connect()
+        .then(() => {
+            let db = client.db("support-CRM");
+            let coll = db.collection("tickets");
+            return coll.find(query).toArray();
+        })
+        .then((tickets) => {
+            res.status(200).send(tickets);
+        })
+        .catch((err) => {
+            res.status(500).send({ error: err.message });
+        })
+        .finally(() => {
+            client.close();
+        });
+};
 
 let getTicketById = (id, res) =>
 {

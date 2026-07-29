@@ -5,7 +5,7 @@ let createTicket = (req, res) =>{
 }
 
 let getAllTickets = (req, res) => {
-    bookingModel.getAllTickets(req.query, res);
+    bookingModel.getAllTickets(req, res);
 }
 
 let getTicketById = (req, res) =>{
