@@ -33,7 +33,14 @@ let getTicketById = () =>
 
 let updateTicket = (id, data, res) =>
 {
-    
+    let client = new MongoClient(url);
+    client.connect();
+    let db = client.db("support-CRM");
+    let coll = db.collection("tickets");
+    coll.updateOne({_id: new ObjectId(id)}, {$set: data})
+    .then((result)=>res.send(result))
+    .catch((err)=>res(err))
+    .finally(()=>client.close())
 }
 
 module.exports = { createTicket, getAllTickets, getTicketById, updateTicket};
