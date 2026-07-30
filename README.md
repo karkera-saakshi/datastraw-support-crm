@@ -78,14 +78,16 @@ datastraw-support-crm/
 │       ├── public/             # Static assets & favicon
 │       ├── index.html          # HTML entry point
 │       └── package.json
+        └── .gitignore
 │
 └── backend/                    # Node.js + Express API server
-    ├── config/                 # Database connections
     ├── models/                 # Mongoose schemas (Ticket, User)
     ├── routes/                 # Express route handlers
     ├── controllers/            # Controller logic
     ├── server.js               # Express application server
     └── package.json
+    ├── .env.example/           # Contains variable names needed
+    └── .gitignore
 ```
 
 ## ⚙️ Local Development Setup
@@ -129,7 +131,7 @@ type NUL > .env
 
 4. Add your environment variables inside backend\.env
 ```bash
-echo PORT=5000 > .env
+echo PORT=9000 > .env
 echo MONGO_URI=your_mongodb_connection_string >> .env
 echo NODE_ENV=development >> .env
 ```
