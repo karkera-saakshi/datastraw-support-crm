@@ -86,3 +86,75 @@ datastraw-support-crm/
     ├── controllers/            # Controller logic
     ├── server.js               # Express application server
     └── package.json
+```
+
+## ⚙️ Local Development Setup
+
+Follow these step-by-step instructions to clone, configure, and run the project locally on your machine.
+
+### Prerequisites
+
+Ensure you have the following installed on your local system:
+* [Node.js](https://nodejs.org/) (v18.0.0 or higher recommended)
+* [npm](https://www.npmjs.com/) (comes bundled with Node.js)
+* [Git](https://git-scm.com/)
+* A [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) account (or a locally running MongoDB server)
+
+---
+
+### Step 1: Clone the Repository
+
+Open your terminal and clone the repository to your local machine:
+
+```bash
+git clone https://github.com/karkera-saakshi/datastraw-support-crm.git
+cd datastraw-support-crm
+```
+### Step 2: Set Up & Run the Backend API
+
+1. Navigate to the backend directory
+```bash
+cd backend
+```
+
+2. Install backend dependencies
+```bash
+npm install
+```
+
+3. Create a .env file in the backend folder
+```bash
+type NUL > .env
+```
+
+4. Add your environment variables inside backend\.env
+```bash
+echo PORT=5000 > .env
+echo MONGO_URI=your_mongodb_connection_string >> .env
+echo NODE_ENV=development >> .env
+```
+
+5. Start the backend development server
+```bash
+node server.js
+```
+
+### Step 3: Set Up & Run the React Frontend
+
+1. Open a new Command Prompt window and navigate to the frontend directory
+```bash
+cd frontend\project-crm
+```
+
+2. Install frontend dependencies
+```bash
+npm install
+```
+
+3. Start the Vite development server
+```bash
+npm run dev
+```
+
+4. Open http://localhost:5173 in your browser
+
