@@ -6,4 +6,4 @@ let app = express();
 app.use(cors());
 app.use(express.json());
 app.use("/api/tickets",bookingRoutes);
-app.listen(9000,()=>console.log("I am listening"));
+const PORT = process.env.PORT || 9000;
