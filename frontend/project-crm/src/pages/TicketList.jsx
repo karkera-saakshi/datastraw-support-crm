@@ -10,25 +10,21 @@ function TicketList() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
 
-  // Fetch tickets whenever search or status state changes
+  // Fetch all tickets once on mount (or when status filter changes)
   useEffect(() => {
     const fetchTickets = async () => {
       try {
         setLoading(true);
         setError('');
 
-        // Axios handles query params automatically via the 'params' config option
         const response = await axios.get('http://localhost:9000/api/tickets', {
           params: {
-            ...(search.trim() && { search: search.trim() }),
             ...(status && { status }),
           },
         });
 
-        // Axios automatically parses JSON data into response.data
         setTickets(response.data);
       } catch (err) {
-        // Extract server message or fallback to general error
         const errorMessage =
           err.response?.data?.message || err.message || 'Something went wrong while loading tickets.';
         setError(errorMessage);
@@ -38,7 +34,27 @@ function TicketList() {
     };
 
     fetchTickets();
-  }, [search, status]);
+  }, [status]);
+
+  // Instant client-side search across ID, Customer Name, Email, Subject, & Description
+  const filteredTickets = tickets.filter((ticket) => {
+    if (!search.trim()) return true;
+
+    const query = search.toLowerCase().trim();
+    const ticketId = (ticket._id || ticket.ticket_id || '').toLowerCase();
+    const customerName = (ticket.name || ticket.customer_name || '').toLowerCase();
+    const customerEmail = (ticket.customer_email || ticket.email || '').toLowerCase();
+    const subject = (ticket.subject || ticket.title || '').toLowerCase();
+    const description = (ticket.description || '').toLowerCase();
+
+    return (
+      ticketId.includes(query) ||
+      customerName.includes(query) ||
+      customerEmail.includes(query) ||
+      subject.includes(query) ||
+      description.includes(query)
+    );
+  });
 
   return (
     <div className="ticket-list-container">
@@ -53,7 +69,7 @@ function TicketList() {
         <div className="search-box">
           <input
             type="text"
-            placeholder="Search by customer name, email, or subject..."
+            placeholder="Search by ID, name, email, subject, or description..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
           />
@@ -76,10 +92,10 @@ function TicketList() {
       {/* Ticket List View */}
       {!loading && !error && (
         <div className="tickets-grid">
-          {tickets.length === 0 ? (
+          {filteredTickets.length === 0 ? (
             <p className="no-results">No tickets found matching your search.</p>
           ) : (
-            tickets.map((ticket) => (
+            filteredTickets.map((ticket) => (
               <div key={ticket._id || ticket.ticket_id} className="ticket-card">
                 <div className="card-header">
                   <span className={`status-badge ${(ticket.status || 'open').toLowerCase().replace(' ', '-')}`}>
@@ -93,7 +109,7 @@ function TicketList() {
                 <h3 className="card-title">{ticket.subject || ticket.title || 'Untitled Ticket'}</h3>
 
                 <p className="card-customer">
-                  <strong>Customer:</strong> {ticket.name ||ticket.customer_name || 'N/A'}
+                  <strong>Customer:</strong> {ticket.name || ticket.customer_name || 'N/A'}
                 </p>
                 <p className="card-email">
                   <strong>Email:</strong> {ticket.customer_email || ticket.email}
