@@ -17,7 +17,7 @@ function TicketDetails() {
       try {
         setLoading(true);
         setError('');
-        const response = await axios.get(`http://localhost:9000/api/tickets/${id}`);
+        const response = await axios.get(`https://datastraw-support-crm-b4v3.onrender.com/api/tickets/${id}`);
         setTicket(response.data);
       } catch (err) {
         setError(
@@ -35,7 +35,7 @@ function TicketDetails() {
   const handleStatusChange = async (newStatus) => {
     try {
       setUpdating(true);
-      const response = await axios.put(`http://localhost:9000/api/tickets/${id}`, {
+      const response = await axios.put(`https://datastraw-support-crm-b4v3.onrender.com/api/tickets/${id}`, {
         status: newStatus,
       });
 

@@ -15,7 +15,7 @@ function CreateTicket() {
 
     let handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:9000/api/tickets", { name, email, subject, status, description })
+    axios.post("https://datastraw-support-crm-b4v3.onrender.com/api/tickets", { name, email, subject, status, description })
       .then(() => {
         alert("Booking successful!");
         setName("");

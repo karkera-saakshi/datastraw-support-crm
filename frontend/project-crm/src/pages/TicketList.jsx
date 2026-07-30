@@ -17,7 +17,7 @@ function TicketList() {
         setLoading(true);
         setError('');
 
-        const response = await axios.get('http://localhost:9000/api/tickets', {
+        const response = await axios.get('https://datastraw-support-crm-b4v3.onrender.com/api/tickets', {
           params: {
             ...(status && { status }),
           },
